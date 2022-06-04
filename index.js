@@ -32,9 +32,20 @@ const run = async () => {
       .db("creative_agency")
       .collection("asesome_service");
 
+    // our work callaction
+    const ourWorkCollaction = client
+      .db("creative_agency")
+      .collection("our_works");
+
     // get all asesomeServiceCollection
     app.get("/service", async (req, res) => {
       const result = await asesomeServiceCollection.find().toArray();
+      res.send(result);
+    });
+
+    // get all our works collaction
+    app.get("/works", async (req, res) => {
+      const result = await ourWorkCollaction.find().toArray();
       res.send(result);
     });
   } finally {
