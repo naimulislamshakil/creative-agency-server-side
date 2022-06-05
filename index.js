@@ -37,6 +37,11 @@ const run = async () => {
       .db("creative_agency")
       .collection("our_works");
 
+    // testmonial collaction
+    const testmonialCollaction = client
+      .db("creative_agency")
+      .collection("tastmonial");
+
     // get all asesomeServiceCollection
     app.get("/service", async (req, res) => {
       const result = await asesomeServiceCollection.find().toArray();
@@ -46,6 +51,12 @@ const run = async () => {
     // get all our works collaction
     app.get("/works", async (req, res) => {
       const result = await ourWorkCollaction.find().toArray();
+      res.send(result);
+    });
+
+    // get all our review
+    app.get("/tastmonial", async (req, res) => {
+      const result = await testmonialCollaction.find().toArray();
       res.send(result);
     });
   } finally {
